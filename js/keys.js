@@ -19,22 +19,14 @@ var clearKey = function (keyCode) {
 var isKeyDown = function (keyName) {
     return keyDown[keys[keyName]] == true;
 };
-//Игровой движок
-var gameEngine = function () {
-    if (typeof engine === 'function') {
-        engine();
-    } else {
-        document.body.innerHTML = 'Не определена функция engine';
-    }
-    requestAnimationFrame(gameEngine);
-};
+
 //Стартуем движок
-window.onload = function (){
-    window.onkeydown = function (e) {
-        setKey(e.keyCode);
-    };
-    window.onkeyup = function (e) {
-        clearKey(e.keyCode);
-    };
-    gameEngine();
+
+window.onkeydown = function (e) {
+    setKey(e.keyCode);
 };
+
+window.onkeyup = function (e) {
+    clearKey(e.keyCode);
+};
+
