@@ -9,16 +9,30 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/graph.js"></script>
         <script type="text/javascript" src="js/player.js"></script>
+        <script type="text/javascript" src="js/grid.js"></script>
+        <script type="text/javascript" src="js/ball.js"></script>
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
         <canvas id="canvas" width="640" height="480"></canvas>
         <script type="text/javascript">
             init();
+
+
+            ball.init(player.x+Math.ceil(player.width/2), player.y-5, 5,'blue');
+            grid.generate(6,60,30,'red');
             var game = function() {
                 fillAll('#add8e6');
+
+                grid.draw();
+
+                ball.collision();
+                ball.move();
+                ball.draw();
+
                 player.move();
                 player.draw();
+                player.collision();
 
             };
             startGame(game);
